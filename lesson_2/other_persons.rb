@@ -7,7 +7,7 @@ class Person
   end
 
   def name
-    puts "#{first_name} #{last_name}".strip
+    "#{first_name} #{last_name}".strip
   end
 
   def name=(full_name)
