@@ -74,3 +74,4 @@ end
 
 honda = MyCar.new(1991, 'honda accord', 'red')
 puts honda.age
+honda.to_s
