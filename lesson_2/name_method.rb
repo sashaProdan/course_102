@@ -26,6 +26,6 @@ p bob.last_name
 bob.last_name = 'Smith'
 bob.name
 
-bob.name = 'John Adams'
+bob.name = "John Adams'
 bob.first_name
 bob.last_name
