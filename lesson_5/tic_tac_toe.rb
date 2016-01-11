@@ -39,19 +39,21 @@ class Board
     (1..9).each { |key| @squares[key] = Square.new }
   end
 
+  # rubocop:disable Metrics/AbcSize
   def draw
     puts '     |     |'
     puts "  #{@squares[1]}  |  #{@squares[2]}  |  #{@squares[3]}"
     puts '     |     |'
-    puts '-----+-----|-----'
+    puts '-----+-----+-----'
     puts '     |     |'
     puts "  #{@squares[4]}  |  #{@squares[5]}  |  #{@squares[6]}"
     puts '     |     |'
-    puts '-----+-----|-----'
+    puts '-----+-----+-----'
     puts '     |     |'
     puts "  #{@squares[7]}  |  #{@squares[8]}  |  #{@squares[9]}"
     puts '     |     |'
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
@@ -60,6 +62,7 @@ class Board
     return false if markers.size != 3
     markers.min == markers.max
   end
+
 end
 
 class Square
@@ -116,9 +119,9 @@ class TTTGame
       loop do
         current_player_moves
         break if board.someone_won? || board.full?
-        clear_screen_and_display_board  
+        clear_screen_and_display_board
       end
-      
+
       display_result
       break unless play_again?
       reset
@@ -128,9 +131,11 @@ class TTTGame
     display_goodbye_message
   end
 
+  private
+
   def display_welcome_message
     puts 'Welcome to Tic Tac Toe!'
-    puts ''
+    puts ' '
   end
 
   def display_goodbye_message
@@ -143,14 +148,14 @@ class TTTGame
   end
 
   def display_board
-    puts "You're #{human.marker}. Computer is #{computer.marker}."
+    puts "You're a #{human.marker}. Computer is a #{computer.marker}."
     puts ''
     board.draw
     puts ''
   end
 
   def human_moves
-    puts "Choose a square (#{board.unmarked_keys.join(', ')}):"
+    puts "Choose a square (#{board.unmarked_keys.join(', ')}): "
     square = nil
     loop do
       square = gets.chomp.to_i
@@ -163,6 +168,16 @@ class TTTGame
 
   def computer_moves
     board[board.unmarked_keys.sample] = computer.marker
+  end
+
+  def current_player_moves
+    if @current_marker == HUMAN_MARKER
+      human_moves
+      @current_marker = COMPUTER_MARKER
+    else
+      computer_moves
+      @current_marker = HUMAN_MARKER
+    end
   end
 
   def display_result
@@ -178,23 +193,13 @@ class TTTGame
     end
   end
 
-  def current_player_moves
-    if @current_marker == HUMAN_MARKER
-      human_moves
-      @current_marker == COMPUTER_MARKER
-    else 
-      computer_moves
-      @current_marker == HUMAN_MARKER
-    end
-  end
-        
   def play_again?
     answer = nil
     loop do
       puts 'Would you like to play again? (y/n)'
       answer = gets.chomp.downcase
-      break if %(y n).include? answer
-      puts 'Sorry, must be y or n!'
+      break if %w(y n).include? answer
+      puts 'Sorry, must be y or n'
     end
 
     answer == 'y'
