@@ -1,7 +1,7 @@
 
 class Game
   def play
-    "Start the game!"
+    'Start the game!'
   end
 end
 
@@ -12,4 +12,4 @@ class Bingo < Game
 end
 
 new_game = Bingo.new
-new_game.play               #  =>   => "Start the game!"
+new_game.play               # => "Start the game!"

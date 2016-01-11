@@ -1,11 +1,11 @@
 
 class Television
   def self.manufacturer
-  	# method logic
+    # method logic
   end
 
   def model
-  	# method logic
+    # method logic
   end
 end
 

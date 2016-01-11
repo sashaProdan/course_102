@@ -1,19 +1,19 @@
 
 class Game
   def play
-    "Start the game!"
+    'Start the game!'
   end
 end
 
 class Bingo < Game
   def rules_of_play
-    #  rules of play
+    # rules of play
   end
 
   def play
-  	"Let's play a Bingo game!"
+    "Let's play a Bingo game!"
   end
 end
 
 new_game = Bingo.new
-new_game.play          #  =>   "Let's play a Bingo game!"
+new_game.play        # => "Let's play a Bingo game!"

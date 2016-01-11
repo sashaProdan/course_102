@@ -8,7 +8,7 @@ end
 
 purse = Bag.new("leather")
 
-    #   =>  ArgumentError: wrong number of arguments (1 for 2)
+  #   =>  ArgumentError: wrong number of arguments (1 for 2)
 	#   =>  from (irb):92:in `initialize'
 	#   =>  from (irb):98:in `new'
 

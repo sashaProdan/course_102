@@ -4,7 +4,7 @@ class Cat
 
   def initialize(type)
     @type = type
-    @age  = 0       
+    @age  = 0
   end
 
   def make_one_year_older

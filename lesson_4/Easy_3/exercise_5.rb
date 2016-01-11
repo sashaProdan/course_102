@@ -1,11 +1,11 @@
 
 class Television
   def self.manufacturer
-    puts "I am main Class"
-  end 
+    puts 'I am main Class'
+  end
 
   def model
-    puts "I am a cool TV set"
+    puts 'I am a cool TV set'
   end
 end
 
@@ -17,6 +17,5 @@ tv.model                   #  => 'I am a cool TV set'
 
 Television.manufacturer    #  => 'I am main Class'
 
-Television.model           #  => NoMethodError: undefined method `model' 
+Television.model           #  => NoMethodError: undefined method `model'
                            #    for Television:Class
-                           

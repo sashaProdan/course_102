@@ -4,7 +4,7 @@ class Cube
     @volume = volume
   end
 
-  def get_volume
+  def show_volume
     @volume
   end
 end
