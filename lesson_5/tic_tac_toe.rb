@@ -1,4 +1,5 @@
 require 'pry'
+
 class Board
   WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # cols
@@ -100,14 +101,15 @@ class TTTGame
   COMPUTER_MARKER = 'O'
   FIRST_TO_MOVE = COMPUTER_MARKER
 
-  attr_reader :board, :human, :computer, :score
+  attr_reader :board, :human, :computer
+  attr_accessor :score
 
-  def initialize(score = {human: 0, computer: 0})
+  def initialize
     @board = Board.new
     @human = Player.new(HUMAN_MARKER)
     @computer = Player.new(COMPUTER_MARKER)
     @current_marker = FIRST_TO_MOVE
-    @score = score
+    @score = {human: 0, computer: 0}
   end
 
   def play
@@ -116,7 +118,6 @@ class TTTGame
 
     loop do
       display_board
-
       loop do
         current_player_moves
         break if board.someone_won? || board.full?
@@ -124,13 +125,22 @@ class TTTGame
       end
 
       display_result
+      winner_of_round
+      binding.pry
       break unless play_again?
       reset
       display_play_again_message
-      winner_of_round
     end
 
     display_goodbye_message
+  end
+
+  def winner_of_round   
+    if score[:human] == 3
+      puts "You won this ROUND!"
+    elsif score[:computer] == 3
+      puts "Sorry!Computer won!"
+    end
   end
 
   private
@@ -196,20 +206,12 @@ class TTTGame
   end
 
   def track_of_points
-    if human.marker
-      @score[:human] += 1
-    elsif computer.marker
-      @score[:computer] += 1
+    if board.winning_marker == human.marker
+      score[:human] += 1
+    elsif board.winning_marker == computer.marker
+      score[:computer] += 1
     end
-    @score
-  end
-     
-  def winner_of_round   
-    if @score[:human] == 3
-      puts "You won this ROUND!"
-    elsif @score[:computer] == 3
-      puts "Sorry!Computer won!"
-    end
+    score
   end
 
   def play_again?
