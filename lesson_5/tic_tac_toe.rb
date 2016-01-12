@@ -1,4 +1,3 @@
-require 'pry'
 
 class Board
   WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
@@ -126,7 +125,6 @@ class TTTGame
 
       display_result
       winner_of_round
-      binding.pry
       break unless play_again?
       reset
       display_play_again_message
