@@ -1,4 +1,3 @@
-
 class Player
   attr_accessor :move, :name
 
@@ -16,7 +15,7 @@ class Human < Player
       break unless n.empty?
       puts "Sorry, must enter a valid name."
     end
-      self.name = n
+    self.name = n
   end
 
   def choose
@@ -33,7 +32,7 @@ end
 
 class Computer < Player
   def set_name
-  	self.name = ['R2D2', 'Hal', 'Chappie', 'Sonny', 'Number 5'].sample
+    self.name = ['R2D2', 'Hal', 'Chappie', 'Sonny', 'Number 5'].sample
   end
 
   def choose

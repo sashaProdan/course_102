@@ -1,4 +1,3 @@
-
 class Move
   VALUES = ['rock', 'paper', 'scissors']
 
