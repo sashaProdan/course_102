@@ -77,8 +77,8 @@ class RPSGame
   end
 
   def play_again?
-  	answer = nil
-  	loop do
+    answer = nil
+    loop do
       puts "Would you like to play again? (y/n)"
       answer = gets.chomp
       break if ['y', 'n'].include? answer.downcase
@@ -90,9 +90,9 @@ class RPSGame
   end
 
   def play
-  	display_welcome_message
+    display_welcome_message
 
-  	loop do
+    loop do
       human.choose
       computer.choose
       display_winner
