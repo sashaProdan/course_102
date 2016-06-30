@@ -2,7 +2,7 @@ require_relative "./board"
 require_relative "./player"
 require_relative "./square"
 
-class TTTPlay
+class TTTGame
   HUMAN_MARKER = 'X'
   COMPUTER_MARKER = 'O'
   FIRST_TO_MOVE = COMPUTER_MARKER
@@ -157,5 +157,5 @@ class TTTPlay
   end
 end
 
-game = TTTPlay.new
+game = TTTGame.new
 game.play
